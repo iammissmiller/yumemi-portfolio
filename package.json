@@ -1,0 +1,13 @@
+{
+  "name": "yumemi-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Yumemi, the kitten who never grows up: a portfolio website for the haX.baby Baby's First Website hackathon (Track 2).",
+  "scripts": {
+    "dev": "serve . --listen 5173",
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

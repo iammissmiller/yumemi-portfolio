@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en" data-theme="morning">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yumemi · wandering maker</title>
+  <meta name="description" content="The portfolio of Yumemi, a calico kitten who never grows up: The Noodle Atlas, the Petal Almanac and Lantern Letters, made on the road across East Asia.">
+  <!-- Apply the saved theme before the page paints, so there is no colour flash -->
+  <script>
+    document.documentElement.classList.add('js');
+    // hide what the opening animation will reveal (safety: always shown after 5s)
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('anim');
+      setTimeout(function () { document.documentElement.classList.remove('anim'); }, 5000);
+    }
+    try { var t = localStorage.getItem('yumemi-theme'); if (t === 'night' || t === 'morning') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preload" href="fonts/hachi-maru-pop.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/zen-maru-gothic-500.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="fonts/dotgothic16.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/hero-path.webp" as="image">
+  <link rel="preload" href="assets/yumemi-lantern.webp" as="image">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- GSAP 3.15 (bundled): scroll-linked animation -->
+  <script src="vendor/gsap/gsap.min.js" defer></script>
+  <script src="vendor/gsap/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Falling sakura petals (morning) / glowing fireflies (night), drawn behind the content -->
+  <canvas id="ambient" aria-hidden="true"></canvas>
+
+  <!-- Seal stamps (home, night/morning, sound) and the section menu. Hides while you scroll down. -->
+  <header class="topbar">
+    <a class="name-seal" href="#hello" aria-label="Yumemi, back to the start"><span lang="ja" aria-hidden="true">夢見</span></a>
+    <nav class="menu" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#journey">Story</a>
+      <a href="#skills">Skills</a>
+      <a href="#permit">About</a>
+      <a href="#guestbook">Guestbook</a>
+    </nav>
+    <div class="controls">
+      <button id="themeToggle" class="seal" type="button">
+        <span class="seal-mark" lang="ja" aria-hidden="true">朝</span>
+        <span class="seal-cap">Morning</span>
+      </button>
+      <button id="soundToggle" class="seal" type="button">
+        <span class="seal-mark" lang="ja" aria-hidden="true">音</span>
+        <span class="seal-cap">Sound on</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Yumemi, the companion: after the hero she stays with you, with a pose and a line for each section -->
+  <aside class="companion" aria-label="Yumemi" hidden>
+    <p class="companion-bubble" aria-live="polite"></p>
+    <button class="companion-cat" type="button" aria-label="Pat Yumemi" data-no-chime>
+      <img src="assets/yumemi-wave.webp" alt="" width="445" height="488">
+    </button>
+  </aside>
+
+  <main id="main">
+    <!-- ===== HERO ===== -->
+    <section class="hero screen" id="hello" aria-labelledby="heroTitle" data-companion="hide">
+      <div class="hero-copy">
+        <h1 id="heroTitle" class="hero-title">
+          <span class="title-ja" aria-hidden="true"><span lang="ja">ゆ</span><span lang="ja">め</span><span lang="ja">み</span></span>
+          <span class="title-en">Yumemi</span>
+        </h1>
+        <div class="hero-text">
+          <p class="tagline">♡ the kitten who never grows up ♡</p>
+          <p class="lede split">A wandering maker of noodle maps, seasonal sketchbooks and lantern letters.</p>
+          <p class="hero-links">
+            <a class="ink-link" href="#work">See my work</a>
+            <a class="soft-link" href="#journey">Walk with me</a>
+          </p>
+        </div>
+      </div>
+
+      <figure class="hero-art">
+        <div class="pool" aria-hidden="true"></div>
+        <img class="art hero-path" src="assets/hero-path.webp" alt="" width="820" height="1093">
+        <p id="bubble" class="bubble" role="status" aria-live="polite">Mrrp! Hello, little traveller (=^･ω･^=)</p>
+        <span class="sticker sticker-new" aria-hidden="true">new!</span>
+        <span class="purikura-date" aria-hidden="true">2000.10.17 ♡ yumemi</span>
+        <button id="yumemi" class="yumemi" type="button" aria-label="Yumemi the kitten. Pat her!" data-no-chime>
+          <span class="lantern-glow" aria-hidden="true"></span>
+          <img class="pose" src="assets/yumemi-lantern.webp" alt="" width="461" height="496">
+        </button>
+      </figure>
+
+      <a class="scroll-cue" href="#work" aria-label="Scroll to her work"><span>scroll</span><i aria-hidden="true"></i></a>
+    </section>
+
+    <!-- ===== SELECTED WORK (placeholders until the projects are decided) ===== -->
+    <section class="work screen" id="work" aria-labelledby="workTitle" data-companion="wave|Something new is on its way ✧">
+      <h2 id="workTitle" class="section-head" data-reveal><span class="head-ja" lang="ja" aria-hidden="true">作品</span><span class="head-en">Selected work</span></h2>
+      <ul class="placeholders">
+        <li class="ph-card" data-reveal>
+          <div class="ph-art" aria-hidden="true"><span class="ph-num" lang="ja">一</span><span class="sticker">soon!</span></div>
+          <h3>Project one</h3>
+          <p class="ph-note">Coming soon. Still being wrapped up ♡</p>
+        </li>
+        <li class="ph-card" data-reveal>
+          <div class="ph-art" aria-hidden="true"><span class="ph-num" lang="ja">二</span></div>
+          <h3>Project two</h3>
+          <p class="ph-note">Coming soon. Still being wrapped up ♡</p>
+        </li>
+        <li class="ph-card" data-reveal>
+          <div class="ph-art" aria-hidden="true"><span class="ph-num" lang="ja">三</span></div>
+          <h3>Project three</h3>
+          <p class="ph-note">Coming soon. Still being wrapped up ♡</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== MY STORY: a cinematic walk through five places ===== -->
+    <section class="journey" id="journey" aria-labelledby="journeyTitle" data-companion="hide">
+      <div class="journey-pin">
+        <div class="journey-intro">
+          <span class="head-ja" lang="ja" aria-hidden="true">旅</span>
+          <h2 id="journeyTitle">My story</h2>
+          <p>Five places, one little kitten. Keep scrolling to walk with me.</p>
+        </div>
+
+        <div class="stage">
+          <div class="strip">
+            <div class="track">
+              <img class="art scene" src="assets/scene-gate.webp" alt="An old city gate at dusk, with red lanterns, a phone booth and a glowing vending machine" width="1200" height="800">
+              <img class="art scene" src="assets/scene-noodles.webp" alt="A tiny noodle stall at night with a red lantern, steam and a little glowing TV" width="1200" height="800" loading="lazy">
+              <img class="art scene" src="assets/scene-kite.webp" alt="Two children at sunset, one flying a kite and one playing a handheld game, beside a hanok house and a persimmon tree" width="1200" height="800" loading="lazy">
+              <img class="art scene" src="assets/scene-sakura.webp" alt="A sakura-lined street with a photo-sticker booth and a red shrine gate" width="1200" height="800" loading="lazy">
+              <img class="art scene" src="assets/scene-tea.webp" alt="A rooftop teahouse at dawn above a misty old city, with a steaming teapot and a cassette player" width="1200" height="800" loading="lazy">
+            </div>
+            <img id="walker" class="walker" src="assets/yumemi-walk-0.webp" alt="" width="529" height="583" aria-hidden="true">
+          </div>
+        </div>
+
+        <ol class="chapters">
+          <li class="chapter"><span class="num" lang="ja" aria-hidden="true">一</span><h3>The old city gate</h3><p>Hi, I'm Yumemi. I'm a calico kitten, black, orange and white, and I've been a baby for as long as anyone can remember.</p></li>
+          <li class="chapter"><span class="num" lang="ja" aria-hidden="true">二</span><h3>The midnight noodle stall</h3><p>I follow my nose from town to town. Every place has a bowl of something warm, and I try every single one.</p></li>
+          <li class="chapter"><span class="num" lang="ja" aria-hidden="true">三</span><h3>The kite playground</h3><p>Little ones are my favourite people. They play like today is all there is, and they're right.</p></li>
+          <li class="chapter"><span class="num" lang="ja" aria-hidden="true">四</span><h3>The sakura shrine</h3><p>The petals only stay a few days. So I stop, watch, and squeeze into the sticker booth to keep one moment, every time.</p></li>
+          <li class="chapter"><span class="num" lang="ja" aria-hidden="true">五</span><h3>The rooftop teahouse</h3><p>I never grow up, so I never have to hurry. Sit with me a while. The tea is still warm.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS: a growth chart (she never grows, her skills do) ===== -->
+    <section class="growth screen" id="skills" aria-labelledby="skillsTitle" data-companion="wave|Look how tall my skills got! ✧">
+      <div class="growth-inner">
+        <div class="growth-text">
+          <h2 id="skillsTitle" class="section-head" data-reveal><span class="head-ja" lang="ja" aria-hidden="true">背丈</span><span class="head-en">Growth chart</span></h2>
+          <p class="growth-lede split">I never grow. My skills do. Here are the marks on the teahouse post.</p>
+        </div>
+        <ol class="post">
+          <li style="--h: 96"><span class="mark-label">Slurping noodles</span><span class="mark-note">Master. Can slurp silently on request.</span></li>
+          <li style="--h: 78"><span class="mark-label">Making friends with little ones</span><span class="mark-note">Takes about four seconds.</span></li>
+          <li style="--h: 60"><span class="mark-label">Painting with a wet brush</span><span class="mark-note">The paw prints are a style.</span></li>
+          <li style="--h: 42"><span class="mark-label">Writing letters</span><span class="mark-note">Short ones. The best ones are.</span></li>
+          <li style="--h: 18"><span class="mark-label">Reading maps</span><span class="mark-note">Still very short. I get lost on purpose.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT: the 5-point character sheet (required for Track 2), as her travel permit ===== -->
+    <section class="about screen" id="permit" aria-labelledby="permitTitle" data-companion="lantern|That's me! Official and everything.">
+      <h2 id="permitTitle" class="section-head" data-reveal><span class="head-ja" lang="ja" aria-hidden="true">通行手形</span><span class="head-en">Travel permit</span></h2>
+      <div class="permit">
+        <figure class="permit-photo">
+          <img src="assets/yumemi-back.webp" alt="Yumemi seen from behind, walking on with her sticker-covered backpack and lantern" width="399" height="456" loading="lazy">
+          <span class="stamp" lang="ja" aria-hidden="true">旅</span>
+        </figure>
+        <dl class="fields">
+          <div class="field"><dt>Name</dt><dd>Yumemi <span lang="ja">ゆめみ</span></dd></div>
+          <div class="field"><dt>What I am</dt><dd>A baby calico kitten, black, orange and white, who never grows up. Usually found in a lilac hoodie, big headphones and platform sneakers, with a paper lantern on a stick.</dd></div>
+          <div class="field"><dt>What I do</dt><dd>I wander across East Asia with my lantern, eat every local dish I find and paint the road as the seasons change. Wherever I stop, I leave a small letter for children about loving childhood and living in the moment.</dd></div>
+          <div class="field"><dt>My story</dt><dd class="unwritten">Still being written.</dd></div>
+          <div class="field"><dt>Motto</dt><dd class="unwritten">Still being written.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== GUEST BOOK ===== -->
+    <section class="guestbook screen" id="guestbook" aria-labelledby="gbTitle" data-companion="sleep|Zzz… leave me a note (˘ω˘)">
+      <h2 id="gbTitle" class="section-head" data-reveal><span class="head-ja" lang="ja" aria-hidden="true">芳名帳</span><span class="head-en">Guest book</span></h2>
+      <form class="gb-form" data-reveal>
+        <label class="gb-field"><span>Your name</span><input name="name" maxlength="40" autocomplete="off" placeholder="A fellow traveller"></label>
+        <label class="gb-field"><span>A note for Yumemi</span><textarea name="note" maxlength="200" rows="3" placeholder="Where should I walk next?"></textarea></label>
+        <button class="open-toy" type="submit">Leave a note</button>
+        <p class="gb-status" aria-live="polite">The guest book opens soon. Notes can't be saved yet.</p>
+      </form>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER: the journey ends at the old city wall, full screen ===== -->
+  <footer class="footer" aria-labelledby="endTitle" data-companion="hide">
+    <div class="mount" aria-hidden="true">
+      <p class="ticker"><span>✿ welcome to yumemi's homepage ✿ best viewed at 800×600 with a warm bowl of noodles ✿ please sign my guestbook ✿ this page never grows up ✿ </span><span>✿ welcome to yumemi's homepage ✿ best viewed at 800×600 with a warm bowl of noodles ✿ please sign my guestbook ✿ this page never grows up ✿ </span></p>
+    </div>
+    <div class="finale">
+      <div class="finale-scene">
+        <img class="finale-art" src="assets/finale.webp" alt="The old city wall and gate tower at night under a full moon, lanterns glowing" width="1400" height="933" loading="lazy">
+        <img class="finale-cat" src="assets/yumemi-sleep.webp" alt="Yumemi asleep on her backpack, lantern glowing beside her" width="526" height="422" loading="lazy">
+      </div>
+      <h2 id="endTitle" class="finale-title"><span lang="ja" aria-hidden="true">終</span><span class="split">Thank you for walking with me.</span></h2>
+      <div class="finale-copy">
+        <p class="tally-line"><span class="tally-label">visitors</span> <span id="tally" class="odometer" aria-hidden="true"></span> <span id="tallyCount" class="tally-count"></span></p>
+        <p class="credits">
+          Yumemi and her world are our original characters and ideas. The watercolour illustrations were generated with ChatGPT (OpenAI) from our prompts, then cut out and cleaned up by our team.
+          Fonts: Hachi Maru Pop, DotGothic16, Zen Maru Gothic and Yuji Syuku (SIL Open Font License). Animation: GSAP by GreenSock. Confetti: canvas-confetti (ISC licence).
+          Sounds are made live in your browser with the Web Audio API.
+        </p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
