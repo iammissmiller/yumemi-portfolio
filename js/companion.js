@@ -37,6 +37,13 @@ export function initCompanion() {
     }, 3600);
   };
 
+  let peekTimer = 0;
+  const peekSoon = (ms) => {
+    clearTimeout(peekTimer);
+    box.classList.remove('peek');
+    if (window.innerWidth < 900) peekTimer = setTimeout(() => box.classList.add('peek'), ms);
+  };
+
   const hop = () => { if (animate) gsap.fromTo(img, { y: 0 }, { y: -14, duration: .18, yoyo: true, repeat: 1, ease: 'power2.out' }); };
 
   const show = () => {
@@ -73,6 +80,8 @@ export function initCompanion() {
       if (pose === 'hide') { hide(); return; }
       show();
       setPose(pose);
+            peekSoon(2200);
+      
       // on small screens she only talks when you tap her, so she never covers the words
       if (line && window.innerWidth >= 900) speak(line);
     });
@@ -80,6 +89,7 @@ export function initCompanion() {
   sections.forEach((s) => io.observe(s));
 
   cat.addEventListener('click', () => {
+    peekSoon(4200);
     hop();
     sound.mrrp();
     const sectionLine = current && current.dataset.companion.split('|')[1];

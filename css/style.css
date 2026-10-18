@@ -706,3 +706,23 @@ main { overflow-x: clip; }
   .ticker { width: auto; }
   .ticker span + span { display: none; }
 }
+
+
+/* Phones: bigger hero painting, fuller story screen, readable chapters,
+   and the companion tucks away so she never covers the words */
+@media (max-width: 899px) {
+  .hero-art { max-height: none; height: 100%; width: 100%; }
+  .strip { --scene-h: min(56svh, 118vw); }
+  .chapter { top: 76px; padding: 12px 16px 16px; border-radius: 18px; background: rgba(255, 255, 255, .62); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); box-shadow: 0 8px 24px var(--c-glow); }
+  .chapter::before { display: none; }
+  .chapter h3 { font-size: 1.55rem; }
+  .chapter p { font-size: 1rem; line-height: 1.6; }
+  .stop-tag { font-size: .95rem; }
+  .companion-cat { transition: transform .45s cubic-bezier(.3, 1.4, .5, 1); }
+  .companion.peek .companion-cat { transform: translateY(70%); }
+  .companion.peek .companion-bubble { display: none; }
+}
+
+
+/* no blue/grey flash box when you tap something on a phone (keyboard focus rings still show) */
+* { -webkit-tap-highlight-color: transparent; }
