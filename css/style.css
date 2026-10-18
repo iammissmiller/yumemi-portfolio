@@ -278,22 +278,41 @@ main { overflow-x: clip; }
   transform-origin: 50% 95%;
 }
 .yumemi:focus-visible { outline: 3px dotted var(--accent); outline-offset: 4px; border-radius: 12px; }
-.yumemi .pose { position: relative; height: 100%; width: auto; max-width: none; transform-origin: 50% 100%; animation: breathe 4s ease-in-out infinite; filter: drop-shadow(0 14px 14px rgba(90, 40, 80, .18)); }
-.yumemi.asleep .pose { height: 60%; }
-.yumemi.asleep .lantern-glow { top: 66%; left: 18%; }
-@keyframes breathe { 50% { transform: scale(1.014, .986); } }
-.yumemi.bounce .pose { animation: hop .45s ease-out; }
-@keyframes hop { 40% { transform: translateY(-16px) scale(1.03, .97); } }
-.lantern-glow {
-  position: absolute; left: -16%; top: 42%; width: 56%; aspect-ratio: 1;
-  border-radius: 50%; pointer-events: none;
-  background: radial-gradient(closest-side, rgba(255, 196, 110, .8), rgba(255, 140, 60, .28) 50%, transparent);
-  mix-blend-mode: screen; opacity: 0;
-  animation: flicker 3.2s ease-in-out infinite;
-  transition: opacity 1.2s;
+.pose-wrap {
+  position: relative; display: block; height: 100%;
+  transform-origin: 50% 100%; animation: breathe 4s ease-in-out infinite;
 }
-:root[data-theme="night"] .lantern-glow { opacity: 1; }
-@keyframes flicker { 0%, 100% { transform: scale(1); } 40% { transform: scale(1.08); } 60% { transform: scale(.96); } }
+.yumemi .pose { position: relative; display: block; height: 100%; width: auto; max-width: none; filter: drop-shadow(0 14px 14px rgba(90, 40, 80, .18)); }
+.yumemi[data-pose="sleep"] .pose-wrap { height: 60%; }
+@keyframes breathe { 50% { transform: scale(1.014, .986); } }
+.yumemi.bounce .pose-wrap { animation: hop .45s ease-out; }
+@keyframes hop { 40% { transform: translateY(-16px) scale(1.03, .97); } }
+
+/* her eyes: drawn over the painted ones in the lantern pose; the pupils follow the cursor */
+.eyes { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+.eye-look { transition: transform .12s ease-out; }
+.yumemi:not([data-pose="lantern"]) .eyes { display: none; }
+
+/* the glow of the lantern she holds: it softly pulses by day (a hint that it does something),
+   and shines at night */
+.lantern-glow {
+  position: absolute; z-index: 1; left: -1.2%; top: 47.7%; width: 35%; aspect-ratio: 1;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(255, 200, 120, .9), rgba(255, 140, 70, .3) 55%, transparent);
+  mix-blend-mode: screen;
+  animation: lantern-pulse 2.6s ease-in-out infinite;
+}
+.yumemi[data-pose="sleep"] .lantern-glow { left: 27.2%; top: 57%; width: 30%; }
+.yumemi:not([data-pose="lantern"]):not([data-pose="sleep"]) .lantern-glow { display: none; }
+@keyframes lantern-pulse { 0%, 100% { opacity: .25; transform: scale(.92); } 50% { opacity: .7; transform: scale(1.08); } }
+:root[data-theme="night"] .lantern-glow { animation-name: lantern-night; }
+@keyframes lantern-night { 0%, 100% { opacity: .85; transform: scale(1); } 45% { opacity: 1; transform: scale(1.1); } 60% { opacity: .9; transform: scale(.96); } }
+
+/* the Easter egg: a wish lantern floating up into the sky */
+.wish-lantern {
+  position: fixed; z-index: 70; pointer-events: none; height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 190, 110, .95)) drop-shadow(0 0 26px rgba(255, 140, 80, .6));
+}
 
 /* her messages look like a little flip-phone text */
 .bubble, .companion-bubble {
@@ -601,14 +620,6 @@ main { overflow-x: clip; }
   0% { opacity: 1; }
   100% { opacity: 0; transform: translate(calc(-50% + var(--dx, 0px)), calc(-50% + var(--dy, 30px))) rotate(calc(var(--rot, 0deg) + 160deg)) scale(.35); }
 }
-.dream .art { filter: hue-rotate(200deg) saturate(1.4); transition: filter 1.2s; }
-.dream-kanji {
-  position: fixed; z-index: 60; pointer-events: none;
-  font-family: var(--font-pop); font-size: 2.6rem; color: var(--pink-deep);
-  text-shadow: 0 0 2px #fff, 0 0 14px rgba(255, 110, 200, .9);
-  animation: float-up 4s ease-out forwards;
-}
-@keyframes float-up { from { opacity: 0; transform: translateY(0) scale(.6); } 20% { opacity: 1; } to { opacity: 0; transform: translateY(-260px) scale(1.2); } }
 
 /* =========================================================
    Before the intro plays: hide what will animate in

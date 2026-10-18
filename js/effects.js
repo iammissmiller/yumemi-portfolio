@@ -1,8 +1,6 @@
 // Ambient petals / fireflies, the gold-leaf cursor trail, and the "yume" easter egg.
 import { reducedMotion } from './store.js';
-import { sound } from './sound.js';
 import { theme } from './theme.js';
-import { say } from './yumemi.js';
 
 /* --- Sakura petals in the morning, fireflies at night (one canvas, paused when the tab is hidden) --- */
 export function initAmbient() {
@@ -116,48 +114,4 @@ export function initSparkles() {
     if (e.pointerType === 'mouse') return;
     for (let i = 0; i < 8; i++) spark(e.clientX + Math.random() * 36 - 18, e.clientY + Math.random() * 36 - 18);
   }, { passive: true });
-}
-
-/* --- Easter egg: type "yume" (夢, "dream") anywhere --- */
-export function initEasterEgg() {
-  const root = document.documentElement;
-  let typed = '';
-  let dreaming = false;
-
-  function dreamMode() {
-    if (dreaming) return;
-    dreaming = true;
-    root.classList.add('dream');
-    say('夢: "yume" means dream. You found my secret!');
-    sound.dream();
-    if (!reducedMotion) {
-      for (let i = 0; i < 10; i++) {
-        const k = document.createElement('span');
-        k.className = 'dream-kanji';
-        k.setAttribute('aria-hidden', 'true');
-        k.textContent = '夢';
-        k.style.left = `${5 + Math.random() * 90}vw`;
-        k.style.top = `${55 + Math.random() * 40}vh`;
-        k.style.animationDelay = `${Math.random() * 1.2}s`;
-        document.body.appendChild(k);
-        k.addEventListener('animationend', () => k.remove(), { once: true });
-      }
-    }
-    if (typeof window.confetti === 'function') {
-      window.confetti({
-        particleCount: 90, spread: 90, origin: { y: 0.4 },
-        colors: ['#f7b6c8', '#e0a84a', '#b8322a', '#ede4d3'],
-        disableForReducedMotion: true,
-      });
-    }
-    setTimeout(() => { root.classList.remove('dream'); dreaming = false; }, 7000);
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.ctrlKey || e.metaKey || e.altKey) return;
-    if (e.target.closest('input, textarea, [contenteditable="true"]')) return; // don't trigger while typing a note
-    if (e.key.length !== 1) return;
-    typed = (typed + e.key.toLowerCase()).slice(-4);
-    if (typed === 'yume') { typed = ''; dreamMode(); }
-  });
 }

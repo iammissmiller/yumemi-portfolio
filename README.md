@@ -18,7 +18,7 @@ Built for the haX.baby *Baby's First Website* hackathon (17–19 October 2026), 
 | **Motto** | Stay little, and eat it while it's warm ♡ |
 
 ## What's on the page
-- **Hero:** an opening sequence (the painting bleeds onto the paper, her name is brushed in, Yumemi hops onto the path). She leans toward your cursor, waves when you pat her, and falls asleep if you leave her alone.
+- **Hero:** an opening sequence (the painting bleeds onto the paper, her name is brushed in, Yumemi hops onto the path). She leans toward your cursor and her eyes follow it (your finger on phones), waves when you pat her, and falls asleep if you leave her alone.
 - **Yumemi as your guide:** after the hero she stays in the corner with a pose and a line for each section. Pat her and she talks.
 - **Selected work:** three projects, coming soon.
 - **My story:** scroll down and a long painted road slides sideways while Yumemi walks it (a 4-frame walk cycle that follows your scrolling, and turns around if you scroll back). She stops at five places (an old city gate, a midnight noodle stall, a kite playground, a sakura shrine and a rooftop teahouse); at each, the camera eases in, the sky changes with the time of day and a chapter of her story appears.
@@ -26,10 +26,10 @@ Built for the haX.baby *Baby's First Website* hackathon (17–19 October 2026), 
 - **Travel permit:** the 5-point character sheet as a holographic ID card.
 - **Guest book:** opens soon.
 - **Footer:** the journey ends at the old city wall at night, with Yumemi asleep on the road.
-- **Morning / night** seal (朝 / 夜): night is a dim, quiet version of the day.
+- **Morning / night** seal (朝 / 夜): night is a dim, quiet version of the day, and Yumemi is curled up asleep with her lantern glowing (tap her and she wakes for a moment).
 - **Sound** seal (音 / 静): every sound is synthesised live with the Web Audio API, with a mute switch that remembers your choice.
 - Early-web touches: a cursor trail (sakura petals by day, stars by night), an LED ticker, a classic hit counter, blinking stickers.
-- A secret, for the curious. (Hint: it's a word.)
+- A secret, for the curious. (Hint: it glows.)
 - Every section fills the screen; the layout adapts to phones (bottom tab bar) and respects "reduce motion".
 
 ## Tech

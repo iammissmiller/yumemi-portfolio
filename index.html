@@ -96,9 +96,39 @@
         <p id="bubble" class="bubble" role="status" aria-live="polite">Mrrp! Hello, little traveller (=^･ω･^=)</p>
         <span class="sticker sticker-new" aria-hidden="true">new!</span>
         <span class="purikura-date" aria-hidden="true">2000.10.17 ♡ yumemi</span>
-        <button id="yumemi" class="yumemi" type="button" aria-label="Yumemi the kitten. Pat her!" data-no-chime>
-          <span class="lantern-glow" aria-hidden="true"></span>
-          <img class="pose" src="assets/yumemi-lantern.webp" alt="" width="461" height="496">
+        <button id="yumemi" class="yumemi" type="button" aria-label="Yumemi the kitten. Pat her, or tap her lantern" data-no-chime>
+          <span class="pose-wrap">
+            <span class="lantern-glow" aria-hidden="true"></span>
+            <img class="pose" src="assets/yumemi-lantern.webp" alt="" width="461" height="496">
+            <!-- her eyes: the pupils follow your cursor (drawn over the painted eyes of the lantern pose) -->
+            <svg class="eyes" viewBox="0 0 461 496" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+              <defs>
+                <radialGradient id="iris" cx="50%" cy="58%" r="60%">
+                  <stop offset="0" stop-color="#e8b26a"/>
+                  <stop offset=".55" stop-color="#c47f3f"/>
+                  <stop offset="1" stop-color="#7a4520"/>
+                </radialGradient>
+                <clipPath id="eyeL"><ellipse cx="203" cy="160" rx="15.5" ry="14.5"/></clipPath>
+                <clipPath id="eyeR"><ellipse cx="279" cy="144" rx="14" ry="14.5"/></clipPath>
+              </defs>
+              <g clip-path="url(#eyeL)">
+                <ellipse cx="203" cy="160" rx="15.5" ry="14.5" fill="url(#iris)"/>
+                <g class="eye-look" data-cx="203" data-cy="160">
+                  <ellipse cx="203" cy="161" rx="6.8" ry="8.5" fill="#2a1712"/>
+                  <circle cx="198.5" cy="154.5" r="3.4" fill="#fff"/>
+                  <circle cx="207.5" cy="166" r="1.5" fill="#fff" opacity=".85"/>
+                </g>
+              </g>
+              <g clip-path="url(#eyeR)">
+                <ellipse cx="279" cy="144" rx="14" ry="14.5" fill="url(#iris)"/>
+                <g class="eye-look" data-cx="279" data-cy="144">
+                  <ellipse cx="279" cy="145" rx="6.2" ry="8.2" fill="#2a1712"/>
+                  <circle cx="274.8" cy="138.8" r="3.1" fill="#fff"/>
+                  <circle cx="283.2" cy="150" r="1.4" fill="#fff" opacity=".85"/>
+                </g>
+              </g>
+            </svg>
+          </span>
         </button>
       </figure>
 
@@ -209,7 +239,7 @@
   <!-- ===== FOOTER: the journey ends at the old city wall, full screen ===== -->
   <footer class="footer" aria-labelledby="endTitle" data-companion="hide">
     <div class="mount" aria-hidden="true">
-      <p class="ticker"><span>✿ welcome to yumemi's homepage ✿ best viewed at 800×600 with a warm bowl of noodles ✿ please sign my guestbook ✿ this page never grows up ✿ </span><span>✿ welcome to yumemi's homepage ✿ best viewed at 800×600 with a warm bowl of noodles ✿ please sign my guestbook ✿ this page never grows up ✿ </span></p>
+      <p class="ticker"><span>✿ welcome to yumemi's homepage ✿ best viewed at 800×600 with a warm bowl of noodles ✿ please sign my guestbook ✿ psst… her lantern grants wishes ✿ this page never grows up ✿ </span><span>✿ welcome to yumemi's homepage ✿ best viewed at 800×600 with a warm bowl of noodles ✿ please sign my guestbook ✿ psst… her lantern grants wishes ✿ this page never grows up ✿ </span></p>
     </div>
     <div class="finale">
       <div class="finale-scene">

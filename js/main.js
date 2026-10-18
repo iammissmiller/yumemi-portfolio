@@ -4,7 +4,7 @@ import { initSoundSeal } from './sound.js';
 import { initTheme } from './theme.js';
 import { initYumemi, say } from './yumemi.js';
 import { initJourney } from './journey.js';
-import { initAmbient, initSparkles, initEasterEgg } from './effects.js';
+import { initAmbient, initSparkles } from './effects.js';
 import { initReveal, initHeader } from './reveal.js';
 import { initCompanion } from './companion.js';
 
@@ -17,7 +17,6 @@ initCompanion();
 initHeader();
 initAmbient();
 initSparkles();
-initEasterEgg();
 
 /* Guest book: not connected to storage yet, so it says so honestly. */
 const gb = document.querySelector('.gb-form');
