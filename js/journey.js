@@ -15,7 +15,7 @@ const STOPS = [
   { at: 0.38, pose: 'eat' },     // on a stool at the noodle stall
   { at: 0.60, pose: 'wave' },    // waving to the kids with the kite and the handheld game
   { at: 0.64, pose: 'back' },    // looking up the shrine steps
-  { at: 0.58, pose: 'sleep' },   // asleep on the rooftop by the teahouse
+  { at: 0.50, pose: 'sleep' },   // asleep on the rooftop by the teahouse (scene centred)
 ];
 // The sky behind the road for each place: dusk, midnight, day, sakura, dawn
 const SKY = {
@@ -72,7 +72,11 @@ export function initJourney() {
       // walking in: the road slides, the sky shifts to this place's time of day
       tl.to(track, { x, duration: walk, ease: 'sine.inOut' }, t);
       tl.to(pin, { '--journey-bg': sky.stops[i], duration: walk }, t);
-      if (i === 0) tl.to(intro, { autoAlpha: 0, y: -60, duration: walk * 0.5, ease: 'power1.in' }, t);
+      if (i === 0) {
+        // the title card leaves first, then the painted road rises in behind it
+        tl.to(intro, { autoAlpha: 0, y: -60, duration: walk * 0.4, ease: 'power1.in' }, t);
+        tl.fromTo(strip, { autoAlpha: 0, y: 80 }, { autoAlpha: 1, y: 0, duration: walk * 0.45, ease: 'power2.out' }, t + walk * 0.3);
+      }
       else {
         tl.to(strip, { scale: 1, duration: Math.min(walk * 0.4, 0.35), ease: 'power1.inOut' }, t);
         tl.to(chapters[i - 1], { autoAlpha: 0, y: -40, duration: Math.min(walk * 0.35, 0.3) }, t);

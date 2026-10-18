@@ -118,7 +118,7 @@ main { overflow-x: clip; }
 .screen { min-height: 100svh; position: relative; }
 
 /* the white "sticker" outline around display text (a dark outline at night, with a neon glow) */
-.sticker-text, .title-ja span, .head-ja, .journey-intro .head-ja, .num, .finale-title {
+.sticker-text, .title-ja span, .head-ja, .journey-intro .head-ja, .finale-title {
   text-shadow:
     3px 0 0 var(--outline), -3px 0 0 var(--outline), 0 3px 0 var(--outline), 0 -3px 0 var(--outline),
     2px 2px 0 var(--outline), -2px -2px 0 var(--outline), 2px -2px 0 var(--outline), -2px 2px 0 var(--outline),
@@ -323,14 +323,14 @@ main { overflow-x: clip; }
    ========================================================= */
 .companion {
   position: fixed; z-index: 45; right: clamp(10px, 2vw, 28px); bottom: clamp(10px, 2vw, 24px);
-  display: flex; flex-direction: row; align-items: flex-end; gap: 4px;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
   pointer-events: none;
 }
 .companion[hidden] { display: none; }
 .companion-cat { all: unset; cursor: pointer; pointer-events: auto; display: block; }
 .companion-cat:focus-visible { outline: 3px dotted var(--accent); outline-offset: 4px; border-radius: 12px; }
 .companion-cat img { height: clamp(104px, 17svh, 160px); width: auto; max-width: none; filter: drop-shadow(0 8px 10px rgba(60, 20, 60, .22)); transform-origin: 50% 100%; }
-.companion-bubble { margin-bottom: 70%; max-width: 210px; font-size: .86rem; border-radius: 16px 16px 4px 16px; }
+.companion-bubble { margin-right: 22px; max-width: 200px; font-size: .86rem; border-radius: 16px 16px 4px 16px; }
 .companion-bubble:empty { display: none; }
 
 /* =========================================================
@@ -363,125 +363,10 @@ main { overflow-x: clip; }
     linear-gradient(135deg, color-mix(in srgb, var(--pink) 30%, #fff), color-mix(in srgb, var(--lilac) 30%, #fff), color-mix(in srgb, var(--blue) 30%, #fff));
   border: 2px dashed var(--pink);
 }
-.ph-num { font-family: var(--font-pop); font-size: clamp(3.4rem, 7vw, 5rem); line-height: 1; color: var(--ink); text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 5px 6px 0 var(--tint); }
+.ph-num { font-family: var(--font-pop); font-size: clamp(2.6rem, 5vw, 3.8rem); line-height: 1; color: var(--ink); text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 5px 6px 0 var(--tint); }
 .ph-art .sticker { top: 10px; right: 10px; }
 .ph-card h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); padding: 0 6px; }
 .ph-note { margin: 4px 0 0; padding: 0 6px; font-family: var(--font-pixel); font-size: .92rem; color: var(--ink-soft); }
-
-/* =========================================================
-   Selected work: one full screen per project
-   ========================================================= */
-.project {
-  max-width: 1240px; margin: 0 auto;
-  padding: 104px clamp(16px, 5vw, 64px) 64px;
-  display: flex; flex-direction: column; justify-content: center;
-}
-.project-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); gap: clamp(24px, 5vw, 72px); align-items: center; }
-.flip .project-cover { order: 2; }
-.project-cover { position: relative; margin: 0; isolation: isolate; }
-.project-cover .art { position: relative; width: 100%; }
-.almanac-cover { display: grid; gap: 6px; }
-.num { display: block; font-family: var(--font-pop); font-weight: 400; font-size: 3rem; line-height: 1; color: var(--pink-deep); margin-bottom: 8px; }
-.project-info h3 { font-size: clamp(2rem, 3.8vw, 3rem); line-height: 1.15; }
-.project-role { font-family: var(--font-pixel); color: var(--accent); margin: 8px 0 16px; }
-.facts { list-style: none; margin: 0 0 26px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; color: var(--ink-soft); }
-.facts li { padding: 4px 14px 5px; border-radius: 999px; background: var(--paper); border: 2px dashed var(--pink); font-weight: 700; }
-.facts strong { font-family: var(--font-pop); font-weight: 400; font-size: 1.35rem; color: var(--pink-deep); margin-right: 4px; }
-
-/* the lanterns cover for Lantern Letters (pure CSS) */
-.letters-cover { min-height: 360px; display: grid; place-items: center; }
-.hanging { position: relative; list-style: none; margin: 0; padding: 30px 0 0; width: 100%; display: flex; justify-content: space-around;
-  background: linear-gradient(var(--pink), var(--pink)) 0 14px / 100% 2px no-repeat; }
-.hanging li {
-  width: clamp(48px, 6.5vw, 80px); aspect-ratio: 3 / 4; border-radius: 46% / 50%;
-  background: repeating-linear-gradient(90deg, transparent 0 10px, rgba(0, 0, 0, .1) 10px 12px), radial-gradient(circle at 50% 45%, #ffe0a0, #ff7a6a 55%, #d8405a);
-  box-shadow: 0 0 26px 6px rgba(255, 150, 120, .3);
-  transform-origin: 50% -16px; animation: lantern-sway 4s ease-in-out infinite;
-}
-.hanging li:nth-child(2) { margin-top: 40px; animation-delay: -1s; background: repeating-linear-gradient(90deg, transparent 0 10px, rgba(0, 0, 0, .08) 10px 12px), radial-gradient(circle at 50% 45%, #fff, #ffb3d8 55%, #f0559a); }
-.hanging li:nth-child(3) { margin-top: 12px; animation-delay: -2.2s; }
-.hanging li:nth-child(4) { margin-top: 56px; animation-delay: -.6s; background: repeating-linear-gradient(90deg, transparent 0 10px, rgba(0, 0, 0, .08) 10px 12px), radial-gradient(circle at 50% 45%, #fff, #c9b8ff 55%, #8f73ff); }
-.hanging li:nth-child(5) { margin-top: 24px; animation-delay: -3s; }
-@keyframes lantern-sway { 50% { transform: rotate(3deg); } }
-
-.open-toy[aria-expanded="true"] { color: var(--pink-deep); text-shadow: none; background: #fff; box-shadow: 0 0 0 2px var(--pink-deep); }
-
-/* toy panels: a sticker-sheet card */
-.toy {
-  margin-top: 32px; padding: clamp(18px, 3vw, 32px);
-  background: var(--paper); border-radius: 24px;
-  box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--pink), 0 18px 40px rgba(240, 85, 154, .16);
-}
-.toy[hidden] { display: none; }
-
-.bowls { list-style: none; margin: 0 0 18px; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 14px; }
-.bowl {
-  width: 100%; display: grid; justify-items: center; gap: 8px; padding: 14px 8px 12px; cursor: pointer; color: var(--ink);
-  background: none; border: 0; border-radius: 18px; transition: transform .2s, background-color .2s;
-}
-.bowl span[lang] {
-  display: grid; place-items: center; width: 66px; height: 48px; border-radius: 8px 8px 50% 50% / 8px 8px 100% 100%;
-  font-family: var(--font-pop); font-size: 1.45rem; line-height: 1;
-  color: #4a73c9; background: var(--gloss), linear-gradient(180deg, #ffffff, #dff1ff);
-  box-shadow: 0 0 0 2px #8fbfff, inset 0 -6px 0 rgba(74, 115, 201, .14);
-}
-.bowl-name { font-family: var(--font-pixel); font-size: .88rem; }
-.bowl:hover { transform: translateY(-4px) rotate(-2deg); }
-.bowl[aria-pressed="true"] { background: rgba(255, 143, 198, .14); }
-.bowl[aria-pressed="true"] span[lang] { color: #fff; background: var(--gloss), linear-gradient(180deg, #ffa9d4, var(--pink-deep)); box-shadow: 0 0 0 2px var(--pink-deep); }
-.tasting { min-height: 7.5em; }
-.tasting h4 { margin: 0 0 2px; font-weight: 900; font-size: 1.2rem; }
-.tasting .place { font-family: var(--font-pixel); color: var(--accent); margin: 0 0 8px; }
-.tasting p:last-child { margin: 0; max-width: 62ch; }
-.tasting-hint, .letter-hint { font-family: var(--font-pixel); color: var(--ink-soft); margin: 0; }
-
-.season-tabs { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
-.season-tabs button {
-  cursor: pointer; padding: 6px 16px 6px 10px; border-radius: 999px;
-  font-family: var(--font-pixel); color: var(--ink); background: var(--paper); border: 2px solid var(--pink);
-  display: inline-flex; align-items: center; gap: 8px;
-}
-.season-tabs button span { font-family: var(--font-pop); font-size: 1.2rem; line-height: 1; color: var(--pink-deep); }
-.season-tabs button[aria-selected="true"] { color: #fff; border-color: #fff; background: var(--gloss), linear-gradient(180deg, #ffa9d4, var(--pink-deep)); box-shadow: 0 0 0 2px var(--pink-deep); }
-.season-tabs button[aria-selected="true"] span { color: #fff; }
-.season-view { margin: 0; }
-.season-img { width: 100%; transition: opacity .35s; }
-.season-img.fading { opacity: 0; }
-.season-note { margin-top: 12px; max-width: 62ch; }
-
-.lanterns { list-style: none; margin: 0 0 20px; padding: 10px 0 0; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 16px;
-  background: linear-gradient(var(--pink), var(--pink)) 0 10px / 100% 2px no-repeat; }
-.lantern {
-  position: relative; width: 54px; height: 70px; cursor: pointer; border: 0; padding: 0;
-  border-radius: 46% / 50%;
-  background: repeating-linear-gradient(90deg, transparent 0 10px, rgba(0, 0, 0, .12) 10px 12px), radial-gradient(circle at 50% 45%, #ffe0a0, #ff7a6a 55%, #d8405a);
-  transform-origin: 50% -10px; transition: box-shadow .4s;
-  animation: lantern-sway 4s ease-in-out infinite;
-}
-.lantern::before, .lantern::after { content: ""; position: absolute; left: 50%; width: 22px; height: 6px; margin-left: -11px; background: var(--plum); border-radius: 2px; }
-.lantern::before { top: -3px; }
-.lantern::after { bottom: -3px; }
-.lanterns li:nth-child(2) .lantern { animation-delay: -1s; }
-.lanterns li:nth-child(3) .lantern { animation-delay: -2.2s; }
-.lanterns li:nth-child(4) .lantern { animation-delay: -.6s; }
-.lanterns li:nth-child(5) .lantern { animation-delay: -3s; }
-.lantern:hover, .lantern[aria-pressed="true"] { box-shadow: 0 0 30px 10px rgba(255, 150, 140, .6); }
-.letter { min-height: 6em; display: grid; place-items: center; }
-/* the letter itself: lined Y2K stationery with a heart */
-.letter-card {
-  position: relative; margin: 0; max-width: 34rem; padding: 24px 30px 20px;
-  font-family: var(--font-pop); font-size: clamp(1.15rem, 2.3vw, 1.4rem); line-height: 2; text-align: center;
-  color: var(--plum);
-  background:
-    repeating-linear-gradient(180deg, transparent 0 calc(2em - 2px), rgba(255, 143, 198, .45) calc(2em - 2px) 2em) 0 20px / 100% calc(100% - 40px) no-repeat,
-    linear-gradient(180deg, #fff, #fff4fa);
-  border-radius: 6px; border: 2px solid #ffd0e6;
-  box-shadow: 0 12px 28px rgba(240, 85, 154, .2);
-  transform-origin: 50% 0; animation: unfold .5s ease-out;
-}
-.letter-card::after { content: "♡"; position: absolute; right: 14px; top: 6px; color: var(--pink-deep); font-size: 1.2rem; }
-.letter-card .sign { display: block; margin-top: 4px; font-family: var(--font-pixel); font-size: .85rem; color: var(--pink-deep); }
-@keyframes unfold { from { transform: scaleY(.1); opacity: 0; } to { transform: none; opacity: 1; } }
 
 /* =========================================================
    Story: pinned, cinematic, one chapter per place
@@ -529,7 +414,13 @@ main { overflow-x: clip; }
   background: radial-gradient(closest-side, var(--journey-bg, var(--ground)) 45%, transparent);
   opacity: .94;
 }
-.chapter .num { font-size: clamp(3rem, 6vw, 4.4rem); }
+.stop-tag {
+  display: inline-block; padding: 3px 12px 4px; border-radius: 999px;
+  font-family: var(--font-pixel); font-size: .9rem; letter-spacing: .06em; color: #fff;
+  background: var(--gloss), linear-gradient(180deg, var(--c-top), var(--c-bot));
+  border: 2px solid #fff; box-shadow: 0 0 0 2px var(--c-bot), 0 6px 14px var(--c-glow);
+  transform: rotate(-3deg);
+}
 .chapter h3 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.15; margin: 8px 0 12px; }
 .chapter p { margin: 0; font-size: clamp(1.1rem, 1.8vw, 1.28rem); line-height: 1.75; }
 
@@ -600,6 +491,7 @@ main { overflow-x: clip; }
 .field dt { font-family: var(--font-pixel); font-size: .92rem; color: var(--pink-deep); }
 .field dd { margin: 0; max-width: 60ch; }
 .unwritten { color: #8a789e; font-style: italic; }
+.motto { font-weight: 900; font-size: 1.2rem; color: var(--pink-deep); }
 
 /* =========================================================
    Guest book
@@ -737,7 +629,6 @@ main { overflow-x: clip; }
   .name-seal, .controls { transition: transform .45s ease; }
   .companion { bottom: 70px; }
   .companion-cat img { height: 78px; }
-  .companion { flex-direction: column; }
   .companion-bubble { margin: 0 12px 0 0; max-width: 190px; font-size: .8rem; }
 
   .hero { grid-template-columns: 1fr; grid-template-rows: auto 1fr; padding: 84px 16px 74px; gap: 0; height: 100svh; min-height: 600px; }
@@ -753,33 +644,28 @@ main { overflow-x: clip; }
   .purikura-date { font-size: .8rem; }
   .scroll-cue { display: none; }
 
-  .project { padding: 92px 16px 84px; }
-  .work { padding: 92px 16px 88px; }
+  .work { padding: 92px 16px 170px; }
   .placeholders { grid-template-columns: 1fr; gap: 22px; }
   .ph-card { display: grid; grid-template-columns: 110px 1fr; gap: 0 14px; align-items: center; padding: 10px; }
   .ph-art { grid-row: span 2; aspect-ratio: 1; margin: 0; }
-  .ph-num { font-size: 2.8rem; }
+  .ph-num { font-size: 1.7rem; }
   .ph-art .sticker { font-size: .75rem; top: -8px; right: -8px; }
-  .project-grid { grid-template-columns: 1fr; gap: 20px; }
-  .flip .project-cover { order: 0; }
-  .letters-cover { min-height: 200px; }
 
   .strip { --scene-h: min(46svh, 92vw); }
   .stage { padding-bottom: 80px; }
   .chapter { left: 16px; right: 16px; top: 80px; width: auto; }
-  .chapter .num { font-size: 2.6rem; }
   .chapter h3 { font-size: 1.7rem; margin: 2px 0 6px; }
   .chapter p { font-size: 1.02rem; }
   .walker { --walker-x: 42%; }
 
-  .growth { padding: 92px 16px 84px; }
+  .growth { padding: 92px 16px 170px; }
   .growth-inner { grid-template-columns: 1fr; }
   .post { --post-h: 52svh; }
   .post li { flex-direction: column; align-items: flex-start; gap: 2px; }
   .mark-label { font-size: .95rem; }
   .mark-note { font-size: .86rem; }
 
-  .about, .guestbook { padding: 92px 16px 84px; }
+  .about, .guestbook { padding: 92px 16px 170px; }
   .permit { grid-template-columns: 1fr; gap: 16px; }
   .permit-photo { width: 160px; margin: 0 auto; }
   .field { grid-template-columns: 1fr; gap: 2px; }

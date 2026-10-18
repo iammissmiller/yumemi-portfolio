@@ -4,7 +4,6 @@ import { initSoundSeal } from './sound.js';
 import { initTheme } from './theme.js';
 import { initYumemi, say } from './yumemi.js';
 import { initJourney } from './journey.js';
-import { initWork } from './work.js';
 import { initAmbient, initSparkles, initEasterEgg } from './effects.js';
 import { initReveal, initHeader } from './reveal.js';
 import { initCompanion } from './companion.js';
@@ -12,7 +11,6 @@ import { initCompanion } from './companion.js';
 initTheme();
 initSoundSeal();
 initYumemi();
-initWork();
 initJourney();   // the pinned story first, so everything below it measures its position correctly
 initReveal();
 initCompanion();

@@ -34,7 +34,7 @@ export function initCompanion() {
     bubbleTimer = setTimeout(() => {
       if (animate) gsap.to(bubble, { autoAlpha: 0, duration: .4, onComplete: () => { bubble.textContent = ''; } });
       else bubble.textContent = '';
-    }, 5200);
+    }, 3600);
   };
 
   const hop = () => { if (animate) gsap.fromTo(img, { y: 0 }, { y: -14, duration: .18, yoyo: true, repeat: 1, ease: 'power2.out' }); };
