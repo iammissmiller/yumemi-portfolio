@@ -140,6 +140,9 @@ export function initYumemi() {
   let lastInput = performance.now();
   let target = null;
   let frame = 0;
+  // what she is showing now; each frame it eases part of the way toward the pointer, so she turns smoothly
+  const now = { tilt: 0, lift: 0, eyes: eyes.map(() => ({ x: 0, y: 0 })) };
+  const EASE = 0.18;
   const follow = () => {
     frame = 0;
     if (!target || pose !== 'lantern') return;
@@ -148,19 +151,31 @@ export function initYumemi() {
     const dy = target.y - (r.top + r.height * 0.35);
     const tilt = Math.max(-7, Math.min(7, dx / 60));
     const lift = Math.max(-6, Math.min(4, dy / 90));
-    btn.style.transform = `rotate(${tilt.toFixed(2)}deg) translateY(${lift.toFixed(1)}px)`;
+    now.tilt += (tilt - now.tilt) * EASE;
+    now.lift += (lift - now.lift) * EASE;
+    btn.style.transform = `rotate(${now.tilt.toFixed(2)}deg) translateY(${now.lift.toFixed(1)}px)`;
+    let moving = Math.abs(tilt - now.tilt) > 0.05 || Math.abs(lift - now.lift) > 0.05;
 
     const ir = img.getBoundingClientRect();
-    eyes.forEach((eye) => {
+    eyes.forEach((eye, i) => {
       const ex = ir.left + (Number(eye.dataset.cx) / ART.w) * ir.width;
       const ey = ir.top + (Number(eye.dataset.cy) / ART.h) * ir.height;
       const ddx = target.x - ex;
       const ddy = target.y - ey;
       const dist = Math.hypot(ddx, ddy) || 1;
       const reach = Math.min(1, dist / 220) * EYE_TRAVEL;
-      eye.setAttribute('transform', `translate(${((ddx / dist) * reach).toFixed(2)} ${((ddy / dist) * reach * 0.8).toFixed(2)})`);
+      const e = now.eyes[i];
+      const tx = (ddx / dist) * reach;
+      const ty = (ddy / dist) * reach * 0.8;
+      e.x += (tx - e.x) * EASE * 1.6; // eyes are a little quicker than the body
+      e.y += (ty - e.y) * EASE * 1.6;
+      if (Math.abs(tx - e.x) > 0.02 || Math.abs(ty - e.y) > 0.02) moving = true;
+      eye.setAttribute('transform', `translate(${e.x.toFixed(2)} ${e.y.toFixed(2)})`);
     });
+    // keep easing until she has caught up with the pointer
+    if (moving) frame = requestAnimationFrame(follow);
   };
+  
   const onInput = (x, y) => {
     target = { x, y };
     lastInput = performance.now();
