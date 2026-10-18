@@ -49,10 +49,13 @@ export function initAmbient() {
         g.restore();
         if (p.y > H + 20 || p.x > W + 20) parts[i] = make(false);
       } else {
-        // night: slow specks of dark-blue dust drifting up on the dim paper
-        const a = 0.25 + Math.sin(p.sway * 2) * 0.12;
-        g.fillStyle = `rgba(40, 55, 110, ${a})`;
-        g.beginPath(); g.arc(p.x, p.y, p.r * 1.3, 0, Math.PI * 2); g.fill();
+        // night: warm golden fireflies drifting up into the dark
+        const a = 0.55 + Math.sin(p.sway * 2) * 0.35;
+        g.shadowColor = 'rgba(255, 170, 80, 0.9)';
+        g.shadowBlur = 12;
+        g.fillStyle = `rgba(255, 214, 140, ${a})`;
+        g.beginPath(); g.arc(p.x, p.y, p.r * 1.1, 0, Math.PI * 2); g.fill();
+        g.shadowBlur = 0;
         if (p.y < -20) parts[i] = make(false);
       }
     });

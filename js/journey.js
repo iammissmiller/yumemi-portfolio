@@ -20,7 +20,7 @@ const STOPS = [
 // The sky behind the road for each place: dusk, midnight, day, sakura, dawn
 const SKY = {
   morning: { intro: '#fff4f9', stops: ['#ffe6ee', '#e9e2ff', '#fff0dc', '#ffe6f2', '#f1e8ff'] },
-  night: { intro: '#eceef3', stops: ['#e4e7ef', '#dde1ec', '#e7e8ee', '#e2e5ee', '#e0e4ee'] },
+    night: { intro: '#17132f', stops: ['#2a1d4a', '#141634', '#1f2348', '#2a1c46', '#1d2246'] },
 };
 const PACE = 850;   // px of road per 1000px of scrolling (lower = slower walk)
 const HOLD = 0.85;  // how long she stays at each place, in screen heights of scrolling

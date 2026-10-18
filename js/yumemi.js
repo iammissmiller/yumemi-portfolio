@@ -45,6 +45,8 @@ export function initYumemi() {
   };
   setPose(restingPose());
 
+  if (theme.get() === 'night') say('Zzz… night already. Tap me if you need me ♡');
+
   const backToRest = (after) => {
     clearTimeout(timer);
     timer = setTimeout(() => setPose(restingPose()), after);
@@ -175,7 +177,7 @@ export function initYumemi() {
     // keep easing until she has caught up with the pointer
     if (moving) frame = requestAnimationFrame(follow);
   };
-  
+
   const onInput = (x, y) => {
     target = { x, y };
     lastInput = performance.now();

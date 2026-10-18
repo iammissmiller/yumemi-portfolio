@@ -726,3 +726,96 @@ main { overflow-x: clip; }
 
 /* no blue/grey flash box when you tap something on a phone (keyboard focus rings still show) */
 * { -webkit-tap-highlight-color: transparent; }
+
+
+/* Day: pink gingham picnic-cloth paper */
+body {
+  background-image:
+    radial-gradient(60vmax 50vmax at 0% 0%, rgba(255, 170, 214, .28), transparent 60%),
+    radial-gradient(60vmax 50vmax at 100% 100%, rgba(143, 211, 255, .24), transparent 60%),
+    linear-gradient(90deg, rgba(255, 143, 198, .11) 50%, transparent 50%),
+    linear-gradient(rgba(255, 143, 198, .11) 50%, transparent 50%);
+  background-size: auto, auto, 72px 72px, 72px 72px;
+}
+
+/* Night: lantern festival */
+:root[data-theme="night"] {
+  --ground: #17132f;
+  --paper: #241e48;
+  --pool: rgba(255, 186, 110, .26);
+  --ink: #fbefdc;
+  --ink-soft: #cbbfdc;
+  --accent: #ffb867;
+  --rule: rgba(255, 230, 200, .16);
+  --outline: #2b2254;
+  --art-filter: none;
+  --pink: #f0a050; --pink-deep: #ffc27d; --lilac: #a08cf0; --blue: #7c95e6; --mint: #7fd1b6; --lemon: #ffd98a;
+  --c-top: #ffb35c; --c-bot: #d9661f; --c-glow: rgba(255, 150, 70, .4); --c-text: rgba(110, 40, 0, .55);
+  --tag-top: #b69cff; --tag-bot: #6b4fd8; --tag-glow: rgba(140, 110, 255, .35);
+  --tint: rgba(255, 160, 80, .5);
+  --menu-bot: #241e48;
+  color-scheme: dark;
+}
+:root[data-theme="night"] body {
+  background-image:
+    radial-gradient(55vmax 42vmax at 88% 6%, rgba(255, 176, 92, .18), transparent 60%),
+    radial-gradient(50vmax 40vmax at 4% 96%, rgba(255, 130, 70, .13), transparent 60%),
+    linear-gradient(180deg, #15113a 0%, #211947 55%, #31204e 100%);
+  background-size: auto;
+}
+:root[data-theme="night"] body::before,
+:root[data-theme="night"] body::after {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    radial-gradient(1.6px 1.6px at 22px 34px, #fff6e2, transparent),
+    radial-gradient(1.1px 1.1px at 96px 78px, #ffffff, transparent),
+    radial-gradient(1.8px 1.8px at 150px 132px, #ffe2a8, transparent),
+    radial-gradient(1.1px 1.1px at 58px 162px, #ffffff, transparent);
+  background-size: 190px 190px;
+  animation: twinkle 3.2s ease-in-out infinite alternate;
+}
+:root[data-theme="night"] body::after {
+  background-size: 270px 270px; background-position: 90px 60px;
+  animation-delay: -1.6s; opacity: .7;
+}
+@keyframes twinkle { from { opacity: .35; } to { opacity: 1; } }
+
+:root[data-theme="night"] .menu { background: linear-gradient(180deg, #3a3168, #241e48); border-color: #4b4185; }
+:root[data-theme="night"] .bubble,
+:root[data-theme="night"] .companion-bubble { color: var(--ink); background: #241e48; box-shadow: 0 0 0 3px #3a3168, 0 10px 22px var(--c-glow); }
+:root[data-theme="night"] .ph-card { box-shadow: 0 0 0 3px #3a3168, 0 0 0 6px var(--pink), 0 18px 36px var(--c-glow); }
+:root[data-theme="night"] .ph-card:nth-child(2) { box-shadow: 0 0 0 3px #3a3168, 0 0 0 6px var(--lilac), 0 18px 36px var(--tag-glow); }
+:root[data-theme="night"] .ph-card:nth-child(3) { box-shadow: 0 0 0 3px #3a3168, 0 0 0 6px var(--blue), 0 18px 36px var(--c-glow); }
+:root[data-theme="night"] .ph-art {
+  background:
+    radial-gradient(rgba(255, 230, 190, .14) 2px, transparent 2.4px) 0 0 / 18px 18px,
+    linear-gradient(135deg, #3b2a5a, #2c2a62, #23345e);
+}
+:root[data-theme="night"] .ph-num { text-shadow: 3px 0 0 var(--outline), -3px 0 0 var(--outline), 0 3px 0 var(--outline), 0 -3px 0 var(--outline), 5px 6px 0 var(--tint); }
+:root[data-theme="night"] .gb-form { box-shadow: 0 0 0 3px #3a3168, 0 0 0 6px var(--lilac), 0 24px 50px var(--tag-glow); }
+:root[data-theme="night"] .gb-field ::placeholder { color: var(--ink-soft); opacity: .7; }
+:root[data-theme="night"] .permit {
+  filter: none; color: var(--ink);
+  background: linear-gradient(115deg, #2b2257 0%, #1f2f58 22%, #35255e 44%, #1d3c4c 66%, #3f2b45 88%, #2b2257 100%);
+  background-size: 300% 300%;
+  border-color: #4b4185;
+  box-shadow: 0 0 0 3px var(--pink), 0 24px 50px var(--c-glow);
+}
+:root[data-theme="night"] .permit::after { opacity: .35; }
+:root[data-theme="night"] .field { border-bottom-color: rgba(255, 190, 120, .3); }
+:root[data-theme="night"] .unwritten { color: var(--ink-soft); }
+:root[data-theme="night"] .post { background: linear-gradient(90deg, rgba(255, 170, 90, .14), transparent 55%); }
+@media (max-width: 899px) {
+  :root[data-theme="night"] .chapter { background: rgba(28, 22, 62, .74); }
+}
+/* the paintings are partly see-through watercolour: at night they sit on warm lantern-lit paper */
+:root[data-theme="night"] .hero-path {
+  background-color: #fff1df;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 52%, #000 calc(var(--r, 160%) * .3), transparent calc(var(--r, 160%) * .44));
+  mask-image: radial-gradient(ellipse at 50% 52%, #000 calc(var(--r, 160%) * .3), transparent calc(var(--r, 160%) * .44));
+}
+:root[data-theme="night"] .track {
+  background-color: #fff1df;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 93%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 16%, #000 93%, transparent);
+}
