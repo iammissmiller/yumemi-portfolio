@@ -7,6 +7,7 @@ import { initJourney } from './journey.js';
 import { initAmbient, initSparkles } from './effects.js';
 import { initReveal, initHeader } from './reveal.js';
 import { initCompanion } from './companion.js';
+import { initGame } from './game.js';
 
 initTheme();
 initSoundSeal();
@@ -17,6 +18,7 @@ initCompanion();
 initHeader();
 initAmbient();
 initSparkles();
+initGame();
 
 /* Guest book: not connected to storage yet, so it says so honestly. */
 const gb = document.querySelector('.gb-form');

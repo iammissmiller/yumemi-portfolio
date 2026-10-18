@@ -85,6 +85,7 @@
           <p class="lede split">A wandering maker of noodle maps, seasonal sketchbooks and lantern letters.</p>
           <p class="hero-links">
             <a class="ink-link" href="#work">See my work</a>
+            <button class="open-toy play-link" type="button" id="playBtn">▶ Play with me</button>
             <a class="soft-link" href="#journey">Walk with me</a>
           </p>
         </div>
@@ -131,6 +132,34 @@
           </span>
         </button>
       </figure>
+
+      
+      <!-- Mini game: Yumemi's Snack Run (opens from "Play with me", plays right here in the hero) -->
+      <div class="game" id="game" role="region" aria-label="Yumemi's Snack Run, a mini game" hidden>
+        <canvas class="game-canvas" aria-label="Game area. Move Yumemi with your mouse, your finger, or the arrow keys."></canvas>
+        <div class="game-hud">
+          <span class="hud-box">score <b id="gScore">00000</b></span>
+          <span class="hud-box">time <b id="gTime">45</b></span>
+          <span class="hud-box">best <b id="gBest">00000</b></span>
+          <button class="hud-quit" type="button" id="gQuit" aria-label="Stop playing">✕</button>
+          <span class="hud-combo" id="gCombo"></span>
+        </div>
+        <div class="game-card" id="gCard">
+          <p class="game-kicker">♡ mini game ♡</p>
+          <h2 class="game-title">Yumemi's Snack Run</h2>
+          <p class="game-how">Move Yumemi with your mouse, your finger or the arrow keys. Catch the snacks before they hit the ground!</p>
+          <ul class="game-legend">
+            <li><img data-snack="dumpling" alt=""><img data-snack="onigiri" alt=""><img data-snack="dango" alt=""> catch</li>
+            <li><img data-snack="chilli" alt=""> too spicy!</li>
+            <li><img data-snack="lantern" alt=""> wish time x2</li>
+          </ul>
+          <p class="game-result" id="gResult" aria-live="polite"></p>
+          <p class="game-actions">
+            <button class="ink-link" type="button" id="gStart">Start ♡</button>
+            <button class="soft-link" type="button" id="gExit">Back</button>
+          </p>
+        </div>
+      </div>
 
       <a class="scroll-cue" href="#work" aria-label="Scroll to her work"><span>scroll</span><i aria-hidden="true"></i></a>
     </section>
