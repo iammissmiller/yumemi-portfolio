@@ -222,7 +222,20 @@ main { overflow-x: clip; }
 }
 .seal:hover .seal-mark { transform: rotate(0deg) scale(1.06); }
 .seal:active .seal-mark { transform: scale(.92); }
-#soundToggle[aria-pressed="false"] .seal-mark { color: var(--seal); background: #fff6ee; }
+#soundToggle[aria-pressed="false"] .seal-mark,
+#volSeal[data-muted="true"] .seal-mark {
+  color: var(--seal);
+  background: #fff6ee;
+  border-color: rgba(224, 68, 58, 0.45);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+:root[data-theme="night"] #soundToggle[aria-pressed="false"] .seal-mark,
+:root[data-theme="night"] #volSeal[data-muted="true"] .seal-mark {
+  color: var(--ink-soft);
+  background: #251e44;
+  border-color: #4b4185;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
 .seal-cap { font-family: var(--font-pixel); font-size: .74rem; line-height: 1.45; color: var(--ink-soft); }
 
 .menu {
@@ -381,9 +394,24 @@ main { overflow-x: clip; }
     radial-gradient(var(--dots) 2px, transparent 2.4px) 0 0 / 18px 18px,
     linear-gradient(135deg, color-mix(in srgb, var(--pink) 30%, #fff), color-mix(in srgb, var(--lilac) 30%, #fff), color-mix(in srgb, var(--blue) 30%, #fff));
   border: 2px dashed var(--pink);
+  overflow: hidden;
 }
-.ph-num { font-family: var(--font-pop); font-size: clamp(2.6rem, 5vw, 3.8rem); line-height: 1; color: var(--ink); text-shadow: 3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff, 5px 6px 0 var(--tint); }
-.ph-art .sticker { top: 10px; right: 10px; }
+.ph-art img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  border-radius: 12px;
+  transition: transform .35s ease;
+}
+.ph-card:hover .ph-art img {
+  transform: scale(1.05);
+}
+.ph-num {
+  position: absolute; bottom: 8px; left: 10px; z-index: 2;
+  font-family: var(--font-pop); font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1; color: var(--ink);
+  background: rgba(255, 255, 255, 0.88); backdrop-filter: blur(4px);
+  padding: 4px 10px 2px; border-radius: 999px; border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.ph-art .sticker { top: 10px; right: 10px; z-index: 3; }
 .ph-card h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); padding: 0 6px; }
 .ph-note { margin: 4px 0 0; padding: 0 6px; font-family: var(--font-pixel); font-size: .92rem; color: var(--ink-soft); }
 
@@ -791,7 +819,12 @@ body {
     radial-gradient(rgba(255, 230, 190, .14) 2px, transparent 2.4px) 0 0 / 18px 18px,
     linear-gradient(135deg, #3b2a5a, #2c2a62, #23345e);
 }
-:root[data-theme="night"] .ph-num { text-shadow: 3px 0 0 var(--outline), -3px 0 0 var(--outline), 0 3px 0 var(--outline), 0 -3px 0 var(--outline), 5px 6px 0 var(--tint); }
+:root[data-theme="night"] .ph-num {
+  background: rgba(36, 30, 72, 0.9);
+  border-color: #4b4185;
+  color: var(--ink);
+  text-shadow: none;
+}
 :root[data-theme="night"] .gb-form { box-shadow: 0 0 0 3px #3a3168, 0 0 0 6px var(--lilac), 0 24px 50px var(--tag-glow); }
 :root[data-theme="night"] .gb-field ::placeholder { color: var(--ink-soft); opacity: .7; }
 :root[data-theme="night"] .permit {
@@ -922,3 +955,136 @@ button.soft-link { background: none; border: 0; padding: 0; cursor: pointer; }
 .nl-hint b { font-weight: 400; color: #7dffcf; }
 .nl-hint.all-found { color: #7dffcf; text-shadow: 0 0 8px rgba(125, 255, 207, .8); }
 .anim .nightlight, .anim .nl-hint { visibility: hidden; }
+
+/* =========================================================
+   Volume seal – visually identical to the 朝 / 音 seals.
+   Hover / focus-within reveals a vertical slider that drops
+   down below the ♪ mark. The hide-delay lets the cursor
+   travel from 音 → ♪ without the panel disappearing.
+   ========================================================= */
+
+.vol-seal {
+  position: relative;
+  cursor: default;
+}
+
+/* ♪ mark inherits .seal-mark – just nudge the font size */
+.vol-seal .seal-mark {
+  font-size: 1.45rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ── Drop-down panel (tall & narrow for a vertical slider) ── */
+.vol-panel {
+  position: absolute;
+  top: 100%;   /* snug touching the bottom of the seal container */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 9px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 233, 244, 0.65));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 0 0 2px rgba(255, 143, 198, 0.4), 0 10px 24px var(--c-glow);
+
+  /* ── hidden state with generous fade-out delay ── */
+  opacity: 0;
+  transform: translateX(-50%) scaleY(0.6);
+  transform-origin: top center;
+  pointer-events: none;
+
+  transition:
+    opacity    .25s ease .75s,
+    transform  .25s ease .75s;
+}
+
+/* Reveal: immediate when mouse enters seal or panel */
+.vol-seal:hover .vol-panel,
+.vol-seal:focus-within .vol-panel {
+  opacity: 1;
+  transform: translateX(-50%) scaleY(1);
+  pointer-events: auto;
+  transition:
+    opacity    .2s ease 0s,
+    transform  .2s ease 0s;
+}
+
+/* ── Vertical slider track ─────────────────────────────────── */
+.vol-slider {
+  -webkit-appearance: slider-vertical; /* Safari ≤ 15 */
+  writing-mode: vertical-lr;           /* Chrome 117+, Firefox */
+  direction: rtl;                      /* bottom = 0, top = 100 */
+  appearance: none;
+  width: 4px;
+  height: 80px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  /* Fill: drawn with a linear-gradient driven by --val CSS custom property */
+  background: linear-gradient(
+    to top,
+    var(--seal)  0%,
+    var(--seal)  calc(var(--val, 18) * 1%),
+    var(--rule)  calc(var(--val, 18) * 1%),
+    var(--rule)  100%
+  );
+  transition: background .1s;
+}
+
+/* ── Slider thumb ──────────────────────────────────────────── */
+.vol-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--seal);
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 4px rgba(224,68,58,.35);
+  transition: transform .15s;
+  cursor: grab;
+}
+.vol-slider::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border: none; border-radius: 50%;
+  background: var(--seal);
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 4px rgba(224,68,58,.35);
+  transition: transform .15s;
+  cursor: grab;
+}
+.vol-slider:hover::-webkit-slider-thumb,
+.vol-slider:focus::-webkit-slider-thumb { transform: scale(1.3); }
+.vol-slider:hover::-moz-range-thumb,
+.vol-slider:focus::-moz-range-thumb     { transform: scale(1.3); }
+
+/* ── Night-theme overrides ─────────────────────────────────── */
+:root[data-theme="night"] .vol-panel {
+  background: linear-gradient(180deg, rgba(40, 32, 75, 0.78), rgba(28, 22, 58, 0.72));
+  border-color: rgba(90, 80, 140, 0.65);
+  box-shadow: 0 0 0 2px rgba(163, 168, 200, 0.35), 0 10px 24px var(--c-glow);
+}
+:root[data-theme="night"] .vol-slider {
+  background: linear-gradient(
+    to top,
+    var(--accent) 0%,
+    var(--accent) calc(var(--val, 18) * 1%),
+    var(--rule)   calc(var(--val, 18) * 1%),
+    var(--rule)   100%
+  );
+}
+:root[data-theme="night"] .vol-slider::-webkit-slider-thumb {
+  background: var(--accent);
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 4px var(--tag-glow);
+}
+:root[data-theme="night"] .vol-slider::-moz-range-thumb {
+  background: var(--accent);
+  box-shadow: 0 0 0 2.5px #fff, 0 0 0 4px var(--tag-glow);
+}
+
+/* Respect reduce-motion */
+@media (prefers-reduced-motion: reduce) { .vol-seal { display: none; } }

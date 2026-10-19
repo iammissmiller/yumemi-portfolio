@@ -4,8 +4,6 @@ import { store } from './store.js';
 let ctx = null;
 let muted = store.get('yumemi-muted') === '1';
 
-// Browsers only allow sound after the visitor has clicked, tapped or pressed a key.
-// Until then every sound quietly skips, so nothing is blocked and no warnings appear.
 let unlocked = false;
 ['pointerdown', 'keydown'].forEach((type) => {
   window.addEventListener(type, () => { unlocked = true; }, { once: true, capture: true });
@@ -111,9 +109,9 @@ export function initSoundSeal() {
   const render = () => {
     const on = !muted;
     btn.setAttribute('aria-pressed', String(on));
-    btn.setAttribute('aria-label', on ? 'Sound is on. Mute' : 'Sound is off. Unmute');
+    btn.setAttribute('aria-label', on ? 'SFXs are on. Mute SFXs' : 'SFXs are off. Unmute SFXs');
     btn.querySelector('.seal-mark').textContent = on ? '音' : '静';
-    btn.querySelector('.seal-cap').textContent = on ? 'Sound on' : 'Muted';
+    btn.querySelector('.seal-cap').textContent = on ? 'SFXs' : 'SFXs off';
   };
   btn.addEventListener('click', () => {
     sound.setMuted(!muted);

@@ -1,58 +1,110 @@
-# Yumemi 🐾
+# 🐾 Yumemi (ゆめみ) · The Wandering Maker
+> *"Stay little, and eat it while it's warm ♡"*
 
-**Live site:** https://yumemi-portfolio.vercel.app
+[![Live Demo](https://img.shields.io/badge/Live_Site-yumemi--portfolio.vercel.app-ff7fa8?style=for-the-badge&logo=vercel&logoColor=white)](https://yumemi-portfolio.vercel.app)
+[![Hackathon](https://img.shields.io/badge/haX.baby-Baby's_First_Website_2026-6a5acd?style=for-the-badge)](https://hax.baby)
+[![Track](https://img.shields.io/badge/Track_2-Original_Character-ffb347?style=for-the-badge)](https://hax.baby)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
-A portfolio website for **Yumemi**, a baby calico kitten who never grows up and wanders across East Asia, chasing warm noodles, kites and falling petals.
+---
 
-**Style: Y2K retro folklore.** Watercolour East Asia around the year 2000 (paper lanterns and shrine gates next to vending machines, phone booths and sticker-photo booths), wrapped in a Japan/Korea 2000s pop homepage: candy-gloss buttons, stickers, pixel labels, flip-phone messages, a holographic ID card, an LED ticker and a hit counter.
+## 🌸 Welcome to Yumemi's World!
 
-Built for the haX.baby *Baby's First Website* hackathon (17–19 October 2026), **Track 2: original character**.
+**Yumemi** is a baby calico kitten (black, orange, and white) dressed in an oversized lilac hoodie, chunky retro headphones, and platform sneakers, roaming East Asia with a magical glowing lantern on a stick.
 
-## Character sheet
-| | |
-|---|---|
-| **Name** | Yumemi (ゆめみ) |
-| **What she is** | A baby calico kitten (black, orange and white) who never grows up. Lilac hoodie, big headphones, platform sneakers, and a paper lantern on a stick. |
-| **What she does** | Wanders East Asia with her lantern, befriends little children, eats every local dish, and leaves small lessons about loving childhood and living in the moment. |
-| **Her story** | Long ago, on the last night of a lantern festival, she made a wish on the only lantern still glowing: to stay little until she had tasted every bowl and met every child. The lantern said yes. So she carries it with her, and she keeps walking. |
-| **Motto** | Stay little, and eat it while it's warm ♡ |
+Long ago, on the final evening of a lantern festival, she made a wish upon the only lantern still burning: **to stay little forever until she had tasted every local bowl of noodles and befriended every child.** The lantern answered *yes*. 
 
-## What's on the page
-- **Hero:** an opening sequence (the painting bleeds onto the paper, her name is brushed in, Yumemi hops onto the path). She leans toward your cursor and her eyes follow it (your finger on phones), waves when you pat her, and falls asleep if you leave her alone.
-- **Yumemi as your guide:** after the hero she stays in the corner with a pose and a line for each section. Pat her and she talks.
-- **Selected work:** three projects, coming soon.
-- **My story:** scroll down and a long painted road slides sideways while Yumemi walks it (a 4-frame walk cycle that follows your scrolling, and turns around if you scroll back). She stops at five places (an old city gate, a midnight noodle stall, a kite playground, a sakura shrine and a rooftop teahouse); at each, the camera eases in, the sky changes with the time of day and a chapter of her story appears.
-- **Growth chart** (skills): she never grows, her skills do, marked on a teahouse post.
-- **Travel permit:** the 5-point character sheet as a holographic ID card.
-- **Guest book:** opens soon.
-- **Footer:** the journey ends at the old city wall at night, with Yumemi asleep on the road.
-- **Morning / night** seal (朝 / 夜): night is a dim, quiet version of the day, and Yumemi is curled up asleep with her lantern glowing (tap her and she wakes for a moment).
-- **Sound** seal (音 / 静): every sound is synthesised live with the Web Audio API, with a mute switch that remembers your choice.
-- Early-web touches: a cursor trail (sakura petals by day, stars by night), an LED ticker, a classic hit counter, blinking stickers.
-- A secret, for the curious. (Hint: it glows.)
-- Every section fills the screen; the layout adapts to phones (bottom tab bar) and respects "reduce motion".
+This portfolio is her interactive travel journal, crafted in a **Y2K Retro Folklore** aesthetic—where early 2000s Japanese & Korean web nostalgia (candy-gloss buttons, purikura sticker stamps, pixel tags, LED marquee tickers, hit counters) meets misty watercolor East Asian storybook landscapes.
 
-## Tech
-Plain HTML, CSS and JavaScript modules, no build step.
-- `index.html`: page structure
-- `css/style.css`: all styles (morning and night themes)
-- `js/`: one module per job (`journey.js`, `reveal.js`, `companion.js`, `yumemi.js`, `sound.js`, `theme.js`, `effects.js`, `store.js`), wired together in `main.js`
-- `vendor/gsap/`: GSAP 3.15 (bundled)
-- `fonts/`: Hachi Maru Pop, DotGothic16, Zen Maru Gothic and Yuji Syuku, trimmed to the characters the site uses (SIL Open Font License, licence files included)
+---
 
-### Run it locally
-The site has no build step, but JavaScript modules need a small web server (opening `index.html` directly will not run them):
+## ✨ Features & Interactive Highlights
+
+| Feature | Description | Interactive Experience |
+|---|---|---|
+| **🏮 Interactive Hero & Eye Tracking** | Hand-painted watercolor courtyard with a live SVG eye-tracking rig. | Yumemi's pupils track your mouse or touch movements in real time. Pat her or click her lantern to hear her purr! |
+| **🌙 Morning / Night Mode (朝 / 夜)** | Dual-state visual theme and atmospheric shift. | Toggle the top seal to switch between daytime sakura petals and cozy moonlit night with fireflies and hidden flashlight dream-whispers. |
+| **📜 Scroll-Driven Walk Journey** | Multi-chapter cinematic horizontal path built with GSAP ScrollTrigger. | As you scroll, Yumemi's 4-frame walk cycle paces across 5 handcrafted stops: *The Old City Gate*, *Midnight Noodle Stall*, *Kite Playground*, *Sakura Shrine*, and the *Rooftop Teahouse*. |
+| **🎮 Snack Run Mini-Game** | Embedded arcade-style canvas mini-game inside the hero section. | Help Yumemi catch falling dumplings, onigiri, and dango with keyboard arrow controls or swipe gestures while dodging chili peppers! |
+| **🎋 Teahouse Post Growth Chart** | A whimsical spin on traditional portfolio skill bars. | Yumemi never grows up physically, but her skills do—measuring noodle slurping, letter writing, friend-making, and getting lost on purpose. |
+| **🪪 Holographic Travel Permit** | Official 5-point character dossier formatted as a Y2K holographic pass. | Highlights her origin lore, motto, personality traits, and travel stamps. |
+| **🎶 Dynamic Web Audio & Lo-Fi Beats** | Built-in sound engine with ambient interactive chimes & theme music. | Live synthesizer via Web Audio API, volume slider, theme-synced background music, and a responsive frequency visualizer. |
+| **🐱 Persistent Companion** | Floating interactive cat assistant. | Accompanies you along the page with contextual dialogue prompts and purrs when patted. |
+
+---
+
+## 📋 Official Character Sheet (Track 2)
+
 ```
+┌───────────────────────────────────────────────────────────────────────────────┐
+│ 🏮 YUMEMI'S OFFICIAL TRAVEL PERMIT [ 通行手形 ]                              │
+├───────────────────────────────────────────────────────────────────────────────┤
+│ • Name:         Yumemi (ゆめみ)                                                │
+│ • Identity:     Baby calico kitten who never grows up (Lilac hoodie & lantern)│
+│ • Mission:      Wandering East Asia, eating noodles & reminding all to be kids │
+│ • Origin Wish:  Made a wish on the last lantern to stay young forever          │
+│ • Motto:        "Stay little, and eat it while it's warm ♡"                    │
+└───────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+## 🛠️ Tech Stack & Engineering Architecture
+
+Built with a commitment to pure web fundamentals, buttery 60 FPS performance, and zero bundle bloat:
+
+- **Core:** Semantic HTML5, Vanilla Modern JavaScript (ES Modules, zero bundler required)
+- **Styling:** Custom Vanilla CSS with Design System Tokens, CSS Variables, Glassmorphism, and responsive media queries
+- **Animation Engine:** Bundled GSAP 3.15 + ScrollTrigger for high-performance scroll interpolation
+- **Sound Architecture:** HTML5 `<audio>` cross-fader + Web Audio API synthesizer for procedural interactive chimes and reactive soundscapes
+- **Canvas Systems:**
+  - Dynamic ambient particle layer (Sakura petals by day, fireflies by night)
+  - Interactive "Snack Run" arcade canvas mini-game
+- **Typography:** Tailored, character-trimmed webfonts: *Hachi Maru Pop*, *DotGothic16*, *Zen Maru Gothic*, and *Yuji Syuku* (SIL OFL)
+- **Accessibility & UX:** Full `prefers-reduced-motion` compliance, keyboard navigation, semantic headings, and ARIA live regions for companion announcements.
+
+---
+
+## 🚀 Running Locally
+
+No heavy build pipelines or compilation steps needed!
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/your-username/yumemi-portfolio.git
+cd yumemi-portfolio
+
+# 2. Install minimal static server dependency
 npm install
+
+# 3. Launch the development server
 npm run dev
 ```
-then open http://localhost:5173. Alternatives: `python -m http.server 8000`, or the VS Code "Live Server" extension.
 
-Note: the fonts are trimmed. If you add new Japanese or Chinese characters to the page, they need to be added to the font files too.
+Visit [`http://localhost:5173`](http://localhost:5173) in your browser!
 
-## Credits
-- Yumemi and her world: our original characters and ideas.
-- Watercolour illustrations: generated with ChatGPT (OpenAI) from our prompts, then cut out and cleaned up by our team.
-- Fonts: Hachi Maru Pop, DotGothic16, Zen Maru Gothic and Yuji Syuku (SIL Open Font License).
-- Animation: GSAP by GreenSock.
-- Confetti: canvas-confetti (ISC licence).
+> *Tip: You can also serve it using any static server like `python -m http.server 8000` or VS Code Live Server.*
+
+---
+
+## 👥 The Team Behind Yumemi
+
+Crafted with love, late-night noodles, and warm lanterns for the **haX.baby Hackathon 2026**:
+
+`<to be updated later>`
+
+---
+
+## 📜 Credits & Acknowledgments
+
+- **Character & Worldbuilding:** Original concept & IP developed specifically for *haX.baby*.
+- **Watercolor Artworks:** Conceptualized via creative prompt workflows with ChatGPT (OpenAI), individually cleaned, color-graded, and hand-composited by the team.
+- **Typography:** *Hachi Maru Pop*, *DotGothic16*, *Zen Maru Gothic*, and *Yuji Syuku* under SIL Open Font License.
+- **Libraries:** [GSAP](https://greensock.com/gsap/) by GreenSock, [canvas-confetti](https://github.com/catdad/canvas-confetti) by Kiril Vatev.
+
+---
+
+<p align="center">
+  <i>"No matter how far you walk, the road is always waiting. Eat well and rest often!" 🐾</i>
+</p>
+

@@ -37,6 +37,12 @@
   <script type="module" src="js/main.js"></script>
 </head>
 <body>
+  <!-- Background music: one element per theme, crossfaded by music.js -->
+  <audio id="bgMusic-morning" src="assets/music/yumemi_light_theme.mp3"
+         loop preload="none" crossorigin aria-hidden="true"></audio>
+  <audio id="bgMusic-night"   src="assets/music/yumemi_night_theme.mp3"
+         loop preload="none" crossorigin aria-hidden="true"></audio>
+
   <a class="skip" href="#main">Skip to content</a>
 
   <!-- Falling sakura petals (morning) / glowing fireflies (night), drawn behind the content -->
@@ -59,8 +65,18 @@
       </button>
       <button id="soundToggle" class="seal" type="button">
         <span class="seal-mark" lang="ja" aria-hidden="true">音</span>
-        <span class="seal-cap">Sound on</span>
+        <span class="seal-cap">SFXs</span>
       </button>
+      <!-- Music volume: styled as a seal button with hover-reveal slider -->
+      <div class="seal vol-seal" id="volSeal">
+        <button class="seal-mark" type="button" aria-label="Music volume and mute">&#x266A;</button>
+        <span class="seal-cap">Music</span>
+        <div class="vol-panel" role="group" aria-label="Music volume">
+          <input id="musicVolume" class="vol-slider" type="range"
+                 min="0" max="100" step="1" value="18"
+                 aria-label="Music volume">
+        </div>
+      </div>
     </div>
   </header>
 
@@ -108,7 +124,7 @@
         </div>
         <p id="bubble" class="bubble" role="status" aria-live="polite">Mrrp! Hello, little traveller (=^･ω･^=)</p>
         <span class="sticker sticker-new" aria-hidden="true">new!</span>
-        <span class="purikura-date" aria-hidden="true">2000.10.17 ♡ yumemi</span>
+        <span class="purikura-date" aria-hidden="true">2005.10.17 ♡ yumemi</span>
         <p class="nl-hint">✧ move your lantern · dreams found <b id="nlCount">0</b>/6</p>
         <button id="yumemi" class="yumemi" type="button" aria-label="Yumemi the kitten. Pat her, or tap her lantern" data-no-chime>
           <span class="pose-wrap">
@@ -182,19 +198,29 @@
       <h2 id="workTitle" class="section-head" data-reveal><span class="head-ja" lang="ja" aria-hidden="true">作品</span><span class="head-en">Selected work</span></h2>
       <ul class="placeholders">
         <li class="ph-card" data-reveal>
-          <div class="ph-art" aria-hidden="true"><span class="ph-num">No.1</span><span class="sticker">soon!</span></div>
-          <h3>Project one</h3>
-          <p class="ph-note">Coming soon. Still being wrapped up ♡</p>
+          <div class="ph-art" aria-hidden="true">
+            <img src="assets/work1_noodle_atlas.png" alt="The Noodle Atlas illustrated watercolor map" width="800" height="600" loading="lazy">
+            <span class="ph-num">No.1</span>
+            <span class="sticker">fave!</span>
+          </div>
+          <h3>The Noodle Atlas</h3>
+          <p class="ph-note">A hand-painted map of every late-night stall, broth recipe & warm bowl across East Asia ♡</p>
         </li>
         <li class="ph-card" data-reveal>
-          <div class="ph-art" aria-hidden="true"><span class="ph-num">No.2</span></div>
-          <h3>Project two</h3>
-          <p class="ph-note">Coming soon. Still being wrapped up ♡</p>
+          <div class="ph-art" aria-hidden="true">
+            <img src="assets/work2_almanac.png" alt="Petal Almanac seasonal botanical watercolor calendar" width="800" height="600" loading="lazy">
+            <span class="ph-num">No.2</span>
+          </div>
+          <h3>Petal Almanac</h3>
+          <p class="ph-note">Seasonal watercolor field notes capturing fleeting cherry blossoms, dusk light & local skies ✧</p>
         </li>
         <li class="ph-card" data-reveal>
-          <div class="ph-art" aria-hidden="true"><span class="ph-num">No.3</span></div>
-          <h3>Project three</h3>
-          <p class="ph-note">Coming soon. Still being wrapped up ♡</p>
+          <div class="ph-art" aria-hidden="true">
+            <img src="assets/work3_letters.png" alt="Lantern Letters tied stationery and warm paper lantern" width="800" height="600" loading="lazy">
+            <span class="ph-num">No.3</span>
+          </div>
+          <h3>Lantern Letters</h3>
+          <p class="ph-note">Tiny wish-letters left behind for children to remember to stay little and live in the moment 🏮</p>
         </li>
       </ul>
     </section>
@@ -273,7 +299,6 @@
         <label class="gb-field"><span>Your name</span><input name="name" maxlength="40" autocomplete="off" placeholder="A fellow traveller"></label>
         <label class="gb-field"><span>A note for Yumemi</span><textarea name="note" maxlength="200" rows="3" placeholder="Where should I walk next?"></textarea></label>
         <button class="open-toy" type="submit">Leave a note</button>
-        <p class="gb-status" aria-live="polite">The guest book opens soon. Notes can't be saved yet.</p>
       </form>
     </section>
   </main>

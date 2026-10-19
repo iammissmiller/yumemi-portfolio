@@ -9,9 +9,11 @@ import { initReveal, initHeader } from './reveal.js';
 import { initCompanion } from './companion.js';
 import { initGame } from './game.js';
 import { initNightlight } from './nightlight.js';
+import { initMusic } from './music.js';
 
 initTheme();
 initSoundSeal();
+initMusic();       // background lo-fi music + volume knob
 initYumemi();
 initJourney();   // the pinned story first, so everything below it measures its position correctly
 initReveal();
@@ -21,6 +23,15 @@ initAmbient();
 initSparkles();
 initGame();
 initNightlight();
+
+// Keep the range-slider CSS fill in sync with its value
+(function syncVolSlider() {
+  const slider = document.querySelector('#musicVolume');
+  if (!slider) return;
+  const update = () => slider.style.setProperty('--val', slider.value);
+  slider.addEventListener('input', update);
+  update(); // run once on load
+}());
 
 /* Guest book: not connected to storage yet, so it says so honestly. */
 const gb = document.querySelector('.gb-form');
