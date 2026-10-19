@@ -10,12 +10,14 @@ import { initCompanion } from './companion.js';
 import { initGame } from './game.js';
 import { initNightlight } from './nightlight.js';
 import { initMusic } from './music.js';
+import { initVisualizer } from './visualizer.js';
 
 initTheme();
 initSoundSeal();
-initMusic();       // background lo-fi music + volume knob
+initMusic();       
+initVisualizer();  
 initYumemi();
-initJourney();   // the pinned story first, so everything below it measures its position correctly
+initJourney();   
 initReveal();
 initCompanion();
 initHeader();

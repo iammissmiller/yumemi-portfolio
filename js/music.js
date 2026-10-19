@@ -212,3 +212,8 @@ export function initMusic() {
 
 /** AnalyserNode exposed for visualizer.js */
 export function getAnalyser() { return analyser; }
+
+/** Whether background music is currently unmuted and actively playing */
+export function isMusicPlaying() {
+  return !muted && started && ctx && ctx.state === 'running';
+}
