@@ -111,7 +111,8 @@ Visit [`http://localhost:5173`](http://localhost:5173) in your browser!
 
 Crafted with love, late-night noodles, and warm lanterns for the **haX.baby Hackathon 2026**:
 
-`<to be updated later>`
+- **Praptee Miller** · [@iammissmiller](https://github.com/iammissmiller)
+- **Piyush** · [@piyerx](https://github.com/piyerx)
 
 ---
 
