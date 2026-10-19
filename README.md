@@ -1,10 +1,23 @@
-# 🐾 Yumemi (ゆめみ) · The Wandering Maker
-> *"Stay little, and eat it while it's warm ♡"*
+<div align="center">
+<img width="200" alt="yumemi" src="https://github.com/user-attachments/assets/557e1f11-fa97-48a5-9783-e668208d7cb1" />
 
-[![Live Demo](https://img.shields.io/badge/Live_Site-yumemi--portfolio.vercel.app-ff7fa8?style=for-the-badge&logo=vercel&logoColor=white)](https://yumemi-portfolio.vercel.app)
-[![Hackathon](https://img.shields.io/badge/haX.baby-Baby's_First_Website_2026-6a5acd?style=for-the-badge)](https://hax.baby)
-[![Track](https://img.shields.io/badge/Track_2-Original_Character-ffb347?style=for-the-badge)](https://hax.baby)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
+<h1>Yumemi (ゆめみ) · The Wandering Maker</h1>
+
+<p><em>"Stay little, and eat it while it's warm ♡"</em></p>
+
+<a href="https://yumemi-portfolio.vercel.app">
+<img src="https://img.shields.io/badge/Live_Site-yumemi--portfolio.vercel.app-ff7fa8?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
+</a>
+<a href="https://hax.baby">
+<img src="https://img.shields.io/badge/haX.baby-Baby's_First_Website_2026-6a5acd?style=for-the-badge" alt="Hackathon" />
+</a>
+<a href="https://hax.baby">
+<img src="https://img.shields.io/badge/Track_2-Original_Character-ffb347?style=for-the-badge" alt="Track" />
+</a>
+<a href="LICENSE">
+<img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License: MIT" />
+</a>
+</div>
 
 ---
 
@@ -17,6 +30,9 @@ Long ago, on the final evening of a lantern festival, she made a wish upon the o
 This portfolio is her interactive travel journal, crafted in a **Y2K Retro Folklore** aesthetic—where early 2000s Japanese & Korean web nostalgia (candy-gloss buttons, purikura sticker stamps, pixel tags, LED marquee tickers, hit counters) meets misty watercolor East Asian storybook landscapes.
 
 ---
+
+<img width="1901" height="1199" alt="image" src="https://github.com/user-attachments/assets/5155de12-02cb-48c7-8f8a-efd8b59c4a57" />
+
 
 ## ✨ Features & Interactive Highlights
 
@@ -32,20 +48,21 @@ This portfolio is her interactive travel journal, crafted in a **Y2K Retro Folkl
 | **🐱 Persistent Companion** | Floating interactive cat assistant. | Accompanies you along the page with contextual dialogue prompts and purrs when patted. |
 
 ---
+<img width="1441" height="1189" alt="image" src="https://github.com/user-attachments/assets/2ee9ac50-fcbc-40b9-91d0-980fa310bdf7" />
+
+
 
 ## 📋 Official Character Sheet (Track 2)
 
-```
-┌───────────────────────────────────────────────────────────────────────────────┐
-│ 🏮 YUMEMI'S OFFICIAL TRAVEL PERMIT [ 通行手形 ]                              │
-├───────────────────────────────────────────────────────────────────────────────┤
-│ • Name:         Yumemi (ゆめみ)                                                │
-│ • Identity:     Baby calico kitten who never grows up (Lilac hoodie & lantern)│
-│ • Mission:      Wandering East Asia, eating noodles & reminding all to be kids │
-│ • Origin Wish:  Made a wish on the last lantern to stay young forever          │
-│ • Motto:        "Stay little, and eat it while it's warm ♡"                    │
-└───────────────────────────────────────────────────────────────────────────────┘
-```
+
+| 🏮 Particulars | 📜 Official Record |
+|:--|:--|
+| **Name** | Yumemi (ゆめみ) |
+| **Identity** | An eternal baby calico kitten in a lilac hoodie, carrying a little lantern |
+| **Mission** | To wander across East Asia, savor delicious noodles, and remind the world how to be a kid again |
+| **Origin Wish** | On the night of the last lantern, Yumemi wished to stay little forever |
+| **Personal Motto** | *"Stay little, and eat it while it's warm ♡"* |
+
 
 ---
 
@@ -64,6 +81,9 @@ Built with a commitment to pure web fundamentals, buttery 60 FPS performance, an
 - **Accessibility & UX:** Full `prefers-reduced-motion` compliance, keyboard navigation, semantic headings, and ARIA live regions for companion announcements.
 
 ---
+
+
+<img width="1056" height="315" alt="image" src="https://github.com/user-attachments/assets/95d88f05-316b-4364-b20f-875d5d7b98d0" />
 
 ## 🚀 Running Locally
 
@@ -107,4 +127,6 @@ Crafted with love, late-night noodles, and warm lanterns for the **haX.baby Hack
 <p align="center">
   <i>"No matter how far you walk, the road is always waiting. Eat well and rest often!" 🐾</i>
 </p>
+
+<img width="1041" height="267" alt="image" src="https://github.com/user-attachments/assets/cc43f098-e5b9-4078-88e3-d2d5c077712a" />
 
